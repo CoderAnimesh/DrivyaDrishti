@@ -8,8 +8,38 @@ export default function HeroAstronaut({ onLaunchStudio, onOpenArchitecture }) {
   const [astronautPos, setAstronautPos] = useState({ x: 0, y: 0 });
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const [scrollY, setScrollY] = useState(0);
+  const [astronautLoaded, setAstronautLoaded] = useState(false);
 
   const containerRef = useRef(null);
+
+  // Pre-load and hardware pre-decode astronaut image so it renders immediately and entirely at once
+  useEffect(() => {
+    const webpImg = new Image();
+    webpImg.src = '/assets/indian_astronaut_cutout.webp';
+
+    const markReady = () => {
+      if (webpImg.decode) {
+        webpImg.decode()
+          .then(() => setAstronautLoaded(true))
+          .catch(() => setAstronautLoaded(true));
+      } else {
+        setAstronautLoaded(true);
+      }
+    };
+
+    if (webpImg.complete) {
+      markReady();
+    } else {
+      webpImg.onload = markReady;
+      webpImg.onerror = () => {
+        // Fallback to png
+        const pngImg = new Image();
+        pngImg.src = '/assets/indian_astronaut_cutout.png';
+        pngImg.onload = () => setAstronautLoaded(true);
+        pngImg.onerror = () => setAstronautLoaded(true);
+      };
+    }
+  }, []);
 
   // Scroll listener for subtle parallax
   useEffect(() => {
@@ -172,12 +202,19 @@ export default function HeroAstronaut({ onLaunchStudio, onOpenArchitecture }) {
                 }}
               >
                 <div className="photo-astronaut-frame">
-                  <img 
-                    src="/assets/indian_astronaut_cutout.png" 
-                    alt="Indian Gaganyaan astronaut floating in zero gravity" 
-                    className="real-astronaut-img"
-                    draggable="false"
-                  />
+                  <picture>
+                    <source srcSet="/assets/indian_astronaut_cutout.webp" type="image/webp" />
+                    <img 
+                      src="/assets/indian_astronaut_cutout.png" 
+                      alt="Indian Gaganyaan astronaut floating in zero gravity" 
+                      className={`real-astronaut-img ${astronautLoaded ? 'is-ready' : 'is-loading'}`}
+                      loading="eager"
+                      fetchPriority="high"
+                      decoding="async"
+                      onLoad={() => setAstronautLoaded(true)}
+                      draggable="false"
+                    />
+                  </picture>
                 </div>
               </div>
             </div>
@@ -249,7 +286,7 @@ export default function HeroAstronaut({ onLaunchStudio, onOpenArchitecture }) {
           inset: -20px;
           width: calc(100% + 40px);
           height: calc(100% + 40px);
-          background-image: url('/assets/deep_space_rocket_launch.jpg');
+          background-image: url('/assets/deep_space_rocket_launch.webp');
           background-size: cover;
           background-position: center 32%;
           z-index: 0;
@@ -453,7 +490,7 @@ export default function HeroAstronaut({ onLaunchStudio, onOpenArchitecture }) {
           outline: none;
         }
 
-        /* Clean cutout image with zero border/square artifacts */
+        /* Clean cutout image with zero border/square artifacts - instant load with zero frame scanlines */
         .real-astronaut-img {
           width: 100%;
           height: 100%;
@@ -462,6 +499,12 @@ export default function HeroAstronaut({ onLaunchStudio, onOpenArchitecture }) {
           border: none;
           outline: none;
           pointer-events: none;
+          opacity: 0;
+          transition: opacity 0.22s ease-out;
+        }
+
+        .real-astronaut-img.is-ready {
+          opacity: 1;
         }
 
         /* Bottom Mission Telemetry Ribbon */

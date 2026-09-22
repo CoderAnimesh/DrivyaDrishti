@@ -16,7 +16,7 @@ export default function RegistrationStudio() {
       target: '89.9°S, 0.0°E · Permanent Shadow Region (PSR)',
       moving: {
         name: 'Chandrayaan-2 OHRC',
-        src: '/assets/ch2_crater_rim.jpg',
+        src: '/assets/ch2_crater_rim.webp',
         sunAngle: '12° Oblique (Morning Sun)',
         azimuth: '048° North-East',
         gsd: '0.32 m/px',
@@ -24,7 +24,7 @@ export default function RegistrationStudio() {
       },
       reference: {
         name: 'LRO NAC Base Map',
-        src: '/assets/lro_basemap.jpg',
+        src: '/assets/lro_basemap.webp',
         sunAngle: '76° Sub-Solar (Midday Sun)',
         azimuth: '182° South',
         gsd: '0.50 m/px',
@@ -60,7 +60,7 @@ export default function RegistrationStudio() {
       target: '43.31°S, 11.36°W · Eratosthenian Impact',
       moving: {
         name: 'Chandrayaan-2 TMC-2',
-        src: '/assets/chandrayaan_morning.jpg',
+        src: '/assets/chandrayaan_morning.webp',
         sunAngle: '19° Low Morning Sun',
         azimuth: '072° East',
         gsd: '0.40 m/px',
@@ -68,7 +68,7 @@ export default function RegistrationStudio() {
       },
       reference: {
         name: 'LRO WAC Global Orthomosaic',
-        src: '/assets/lro_basemap.jpg',
+        src: '/assets/lro_basemap.webp',
         sunAngle: '68° Midday Nadir',
         azimuth: '180° South',
         gsd: '0.50 m/px',
@@ -104,7 +104,7 @@ export default function RegistrationStudio() {
       target: '0.674°N, 23.472°E · Basaltic Regolith Plains',
       moving: {
         name: 'Chandrayaan-2 TMC-2 High-Res',
-        src: '/assets/ch2_crater_rim.jpg',
+        src: '/assets/ch2_crater_rim.webp',
         sunAngle: '24° Grazing Angle',
         azimuth: '090° East',
         gsd: '0.35 m/px',
@@ -112,7 +112,7 @@ export default function RegistrationStudio() {
       },
       reference: {
         name: 'LRO NAC Cartographic Base',
-        src: '/assets/lro_basemap.jpg',
+        src: '/assets/lro_basemap.webp',
         sunAngle: '72° High Sun',
         azimuth: '175° South',
         gsd: '0.50 m/px',
@@ -148,7 +148,7 @@ export default function RegistrationStudio() {
       target: '45.45°S, 177.58°E · Deep Sub-Surface Stratigraphy',
       moving: {
         name: 'DFSAR Dual-Pol Radar (SAR C/L-Band)',
-        src: '/assets/chandrayaan_morning.jpg',
+        src: '/assets/chandrayaan_morning.webp',
         sunAngle: 'Microwave Penetrative (No Shadow)',
         azimuth: '268° West Look-Direction',
         gsd: '0.45 m/px',
@@ -156,7 +156,7 @@ export default function RegistrationStudio() {
       },
       reference: {
         name: 'Clementine UVVIS / LRO WAC Global',
-        src: '/assets/lro_basemap.jpg',
+        src: '/assets/lro_basemap.webp',
         sunAngle: '60° Optical Baseline',
         azimuth: '180° South',
         gsd: '0.50 m/px',
@@ -192,7 +192,7 @@ export default function RegistrationStudio() {
       target: '40.80°N, 58.10°W · Multi-Mound Volcanic Plateau',
       moving: {
         name: 'Chandrayaan-2 OHRC High-Resolution',
-        src: '/assets/ch2_crater_rim.jpg',
+        src: '/assets/ch2_crater_rim.webp',
         sunAngle: '15° Low Morning Sun',
         azimuth: '065° North-East',
         gsd: '0.32 m/px',
@@ -200,7 +200,7 @@ export default function RegistrationStudio() {
       },
       reference: {
         name: 'LRO NAC High-Sun Orthomosaic',
-        src: '/assets/lro_basemap.jpg',
+        src: '/assets/lro_basemap.webp',
         sunAngle: '70° High Sun',
         azimuth: '180° South',
         gsd: '0.50 m/px',
